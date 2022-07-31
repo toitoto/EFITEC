@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-lg-6 offset-lg-3">
+      <h3 class="text-center">
+          Nuevo alumno
+      </h3>
+      <div class="text-center">
+        <app-loading *ngIf="loading"></app-loading>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="guardarAlumno()" style="padding-top: 10px;">
+          <div class="form-group">
+              <input type="input" class="form-control" placeholder="Nombres" formControlName="nombres"
+              [ngClass]="{ 'is-invalid': f['nombres'].touched && f['nombres'].errors }">
+              <div *ngIf="f['nombres'].touched && f['nombres'].errors">
+                <div *ngIf="f['nombres'].errors['required']">Nombre es requerido</div>
+                <div *ngIf="f['nombres'].errors['minlength']">
+                  Nombre mínimo de 5 caracteres
+                </div>
+                <div *ngIf="f['nombres'].errors['maxlength']">
+                  Nombre máximo de 50 caracteres
+                </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <input type="input" class="form-control" placeholder="Apellidos" formControlName="apellidos"
+              [ngClass]="{ 'is-invalid': f['apellidos'].touched && f['apellidos'].errors }">
+              <div *ngIf="f['apellidos'].touched && f['apellidos'].errors">
+                <div *ngIf="f['apellidos'].errors['required']">Apellidos es requerida</div>
+                <div *ngIf="f['apellidos'].errors['minlength']">
+                  Apellidos mínimo de 10 caracteres
+                </div>
+                <div *ngIf="f['apellidos'].errors['maxlength']">
+                  Apellidos mínimo de 50 caracteres
+                </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <input type="input" class="form-control" placeholder="fecha de nacimiento" formControlName="fecha_de_nacimiento"
+              [ngClass]="{ 'is-invalid': f['fecha_de_nacimiento'].touched && f['fecha_de_nacimiento'].errors }" readonly>
+              <div *ngIf="f['fecha_de_nacimiento'].touched && f['fecha_de_nacimiento'].errors">
+                <div *ngIf="f['fecha_de_nacimiento'].errors['required']">Apellidos es requerida</div>
+                <div *ngIf="f['fecha_de_nacimiento'].errors['minlength']">
+                  Apellidos mínimo de 10 caracteres
+                </div>
+                <div *ngIf="f['fecha_de_nacimiento'].errors['maxlength']">
+                  Apellidos mínimo de 50 caracteres
+                </div>
+              </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="sexo" id="masculino" value="M">
+              <label class="form-check-label" for="masculino">Masculino</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="sexo" id="femenino" value="F">
+              <label class="form-check-label" for="femenino">Femenino</label>
+            </div>
+          </div>
+          <div class="col text-center">
+              <button class="btn btn-primary mr-2 btn-acep" [disabled]="form.invalid">Grabar</button>
+              <button class="btn btn-secondary" routerLink="/dashboard/alumnos">Cancelar</button>
+          </div>
+      </form>
+  </div>
+</div>

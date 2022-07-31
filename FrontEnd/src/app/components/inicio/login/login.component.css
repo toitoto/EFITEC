@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.3em;
+}
+
+.btn-login {
+  background-color: #F05F44;
+  border-color: #F05F44;
+}
